@@ -1,35 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My IPTV Stream</title>
+  <title>IPTV Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: Arial, sans-serif; background-color: #111; color: #fff; text-align: center; padding: 50px; }
+    body {
+      background-color: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 5px;
+      border: none;
+    }
     .box {
       background-color: #222;
-      padding: 20px;
+      padding: 30px;
       border-radius: 10px;
       display: inline-block;
-      box-shadow: 0 0 10px #000;
     }
-    code {
+    #result {
+      margin-top: 20px;
       color: #0f0;
-      display: block;
-      margin-top: 10px;
-      word-wrap: break-word;
+      word-break: break-word;
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to My IPTV</h1>
-  <div class="box">
-    <p><strong>M3U URL:</strong></p>
-    <code>http://iptv.myserver.xyz/get.php?username=demo123&password=pass456&type=m3u</code>
 
-    <p><strong>Xtream API:</strong></p>
-    <code>http://iptv.myserver.xyz:8080</code>
-    <code>Username: <strong>demo123</strong></code>
-    <code>Password: <strong>pass456</strong></code>
+  <h1>Enter IPTV Login Details</h1>
+  <div class="box">
+    <input type="text" id="server" placeholder="Server URL (e.g. http://example.com:8080)" required><br>
+    <input type="text" id="username" placeholder="Username" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button onclick="generateLink()">Submit</button>
+    <div id="result"></div>
   </div>
+
+  <script>
+    function generateLink() {
+      const server = document.getElementById('server').value.trim();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (!server || !username || !password) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const m3uUrl = `${server}/get.php?username=${username}&password=${password}&type=m3u`;
+      const apiDetails = `Xtream API:\nURL: ${server}\nUsername: ${username}\nPassword: ${password}`;
+
+      document.getElementById('result').innerHTML = `
+        <p><strong>M3U URL:</strong></p>
+        <code>${m3uUrl}</code>
+        <p><strong>${apiDetails.replace(/\n/g, '<br>')}</strong></p>
+      `;
+    }
+  </script>
+
 </body>
 </html>
