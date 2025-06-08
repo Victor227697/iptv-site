@@ -4,18 +4,32 @@
   <title>My IPTV Stream</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body { font-family: Arial; text-align: center; padding: 50px; background: #111; color: white; }
-    .box { background: #222; padding: 20px; border-radius: 10px; display: inline-block; }
-    code { color: #0f0; word-wrap: break-word; }
+    body { font-family: Arial, sans-serif; background-color: #111; color: #fff; text-align: center; padding: 50px; }
+    .box {
+      background-color: #222;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 0 10px #000;
+    }
+    code {
+      color: #0f0;
+      display: block;
+      margin-top: 10px;
+      word-wrap: break-word;
+    }
   </style>
 </head>
 <body>
   <h1>Welcome to My IPTV</h1>
   <div class="box">
     <p><strong>M3U URL:</strong></p>
-    <code>http://yourdomain.com/iptv.m3u</code>
+    <code>http://**your-stream-domain.com**/get.php?username=**yourusername**&password=**yourpassword**&type=m3u</code>
+
     <p><strong>Xtream API:</strong></p>
-    <code>http://yourdomain.com:8080<br>Username: test<br>Password: test</code>
+    <code>http://**your-stream-domain.com:8080**</code>
+    <code>Username: <strong>**yourusername**</strong></code>
+    <code>Password: <strong>**yourpassword**</strong></code>
   </div>
 </body>
 </html>
